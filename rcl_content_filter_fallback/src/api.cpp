@@ -35,11 +35,8 @@
 #include "Log.hpp"
 #include "Utilities.hpp"
 
-
 namespace rcl_content_filter_fallback
 {
-
-const int MAGIC = 0x434654;  // 'C','F','T'
 
 using FilterFactory = rcl_content_filter_fallback::SQLFilter::FilterFactory;
 using IContentFilter = rcl_content_filter_fallback::IContentFilter;
@@ -192,13 +189,7 @@ public:
     return filter_instance_ != nullptr;
   }
 
-  int magic()
-  {
-    return magic_;
-  }
-
 private:
-  const int magic_ = MAGIC;
   const rosidl_message_type_support_t * type_support_;
   std::unique_ptr<void, std::function<void(void *)>> deserialized_buffer_ = nullptr;
   IContentFilter * filter_instance_ = nullptr;
@@ -212,9 +203,7 @@ rcl_content_filter_fallback::ContentFilterWrapper * validate(void * instance)
 {
   auto content_filter_wrapper =
     static_cast<rcl_content_filter_fallback::ContentFilterWrapper *>(instance);
-  if (!content_filter_wrapper ||
-    content_filter_wrapper->magic() != rcl_content_filter_fallback::MAGIC)
-  {
+  if (!content_filter_wrapper) {
     logError(SQLFILTER, "Invalid instance");
     return nullptr;
   }
