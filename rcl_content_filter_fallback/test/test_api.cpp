@@ -24,7 +24,7 @@
 #include <test_content_filter_msgs/msg/complex.hpp>
 #include <osrf_testing_tools_cpp/scope_exit.hpp>
 
-#include "rcl_content_filter_fallback/api.h"
+#include "rcl_content_filter_fallback/rcl_content_filter_fallback.h"
 
 class TestAPIBase
 {

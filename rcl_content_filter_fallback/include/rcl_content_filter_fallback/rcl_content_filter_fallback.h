@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef RCL_CONTENT_FILTER_FALLBACK__API_H_
-#define RCL_CONTENT_FILTER_FALLBACK__API_H_
+#ifndef RCL_CONTENT_FILTER_FALLBACK__RCL_CONTENT_FILTER_FALLBACK_H_
+#define RCL_CONTENT_FILTER_FALLBACK__RCL_CONTENT_FILTER_FALLBACK_H_
 
 #include <rcutils/allocator.h>
 #include <rmw/subscription_content_filter_options.h>
@@ -27,30 +27,30 @@ extern "C"
 {
 #endif
 
-/// Create a rcl content filter fallback instance to filter data.
+/// Create a rcl content filter fallback instance to filter ros2 message data.
 /**
- * \param[in] type_support Type support of the topic data being filtered
- * \return a valid address if success, or NULL on failure
+ * \param[in] type_support Type support of the topic data being filtered.
+ * \return a valid address if success, or NULL on failure.
  */
 RCL_CONTENT_FILTER_FALLBACK_PUBLIC
 void *
 rcl_content_filter_fallback_create(const rosidl_message_type_support_t * type_support);
 
-/// Check if the content filter instance is enabled.
+/// Check if the rcl content filter fallback instance is enabled.
 /**
- * \param[in] instance The content filter instance
- * \return true if enabled, or false
+ * \param[in] instance A rcl content filter fallback instance.
+ * \return true if enabled, or false.
  */
 RCL_CONTENT_FILTER_FALLBACK_PUBLIC
 bool
 rcl_content_filter_fallback_is_enabled(void * instance);
 
-/// Use the content filter instance to evalute the data.
+/// Use the rcl content filter fallback instance to evalute the data.
 /**
- * \param[in] instance The content filter instance
- * \param[in] data The ros2 payload
- * \param[in] serialized Indicate the ros2 payload is serialized or not
- * \return true if evaluate successfully, or false
+ * \param[in] instance A rcl content filter fallback instance.
+ * \param[in] data ros2 payload data.
+ * \param[in] serialized Indicate whether the ros2 payload data is serialized or not.
+ * \return true if evaluate successfully, or false.
  */
 RCL_CONTENT_FILTER_FALLBACK_PUBLIC
 bool
@@ -58,9 +58,9 @@ rcl_content_filter_fallback_evaluate(void * instance, void * data, bool serializ
 
 /// Set a rcl content filter fallback instance with an options.
 /**
- * \param[in] instance The content filter instance
- * \param[in] options the filter options
- * \return true if success, or false
+ * \param[in] instance A rcl content filter fallback instance.
+ * \param[in] options A content filter options.
+ * \return true if success, or false.
  */
 RCL_CONTENT_FILTER_FALLBACK_PUBLIC
 bool
@@ -69,12 +69,12 @@ rcl_content_filter_fallback_set(
   const rmw_subscription_content_filter_options_t * options
 );
 
-/// Get the options from a rcl content filter fallback instance.
+/// Get the content filter options from a rcl content filter fallback instance.
 /**
- * \param[in] instance The content filter instance
- * \param[in] allocator Type support of the topic data being filtered
- * \param[in] options the filter options
- * \return true if success, or false
+ * \param[in] instance A rcl content filter fallback instance.
+ * \param[in] allocator A valid allocator.
+ * \param[in] options a filter options.
+ * \return true if success, or false.
  */
 RCL_CONTENT_FILTER_FALLBACK_PUBLIC
 bool
@@ -86,7 +86,7 @@ rcl_content_filter_fallback_get(
 
 /// Destroy the content filter instance.
 /**
- * \param[in] instance The content filter instance
+ * \param[in] instance A content filter instance.
  */
 RCL_CONTENT_FILTER_FALLBACK_PUBLIC
 void
@@ -96,4 +96,4 @@ rcl_content_filter_fallback_destroy(void * instance);
 }
 #endif
 
-#endif  // RCL_CONTENT_FILTER_FALLBACK__API_H_
+#endif  // RCL_CONTENT_FILTER_FALLBACK__RCL_CONTENT_FILTER_FALLBACK_H_

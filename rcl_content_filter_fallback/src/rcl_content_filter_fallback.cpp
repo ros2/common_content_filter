@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rcl_content_filter_fallback/api.h"
+#include "rcl_content_filter_fallback/rcl_content_filter_fallback.h"
 
 #include <rcutils/allocator.h>
 #include <rmw/error_handling.h>

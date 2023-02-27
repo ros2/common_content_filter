@@ -21,7 +21,6 @@ find_package(rosidl_typesupport_introspection_cpp REQUIRED)
 find_package(tao_pegtl_vendor REQUIRED)
 
 add_library(${PROJECT_NAME}_library SHARED
-  src/api.cpp
   src/FilterCompoundCondition.cpp
   src/FilterExpression.cpp
   src/FilterExpressionParser.cpp
@@ -30,7 +29,8 @@ add_library(${PROJECT_NAME}_library SHARED
   src/FilterParameter.cpp
   src/FilterPredicate.cpp
   src/FilterValue.cpp
-  src/Utilities.cpp)
+  src/Utilities.cpp
+  src/rcl_content_filter_fallback.cpp)
 
 set_target_properties(${PROJECT_NAME}_library
   PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
