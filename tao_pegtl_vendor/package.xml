@@ -7,7 +7,7 @@
     Wrapper around pegtl, providing nothing but a dependency on pegtl, on some systems.
     On others, it provides an ExternalProject build of spdlog.
   </description>
-  <maintainer email="lihui.chen@sony.com">chenlh</maintainer>
+  <maintainer email="lihui.chen@sony.com">Chen Lihui</maintainer>
   <license>Apache License 2.0</license>  <!-- the contents of this package are Apache 2.0 -->
   <license>MIT</license>  <!-- pegtl is MIT -->
 
