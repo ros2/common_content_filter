@@ -4,6 +4,11 @@ project(tao_pegtl_vendor)
 
 find_package(ament_cmake REQUIRED)
 
+# Avoid DOWNLOAD_EXTRACT_TIMESTAMP warning for CMake >= 3.24
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
+endif()
+
 macro(build_tao_pegtl)
   set(extra_cmake_args)
   if(DEFINED CMAKE_BUILD_TYPE)
