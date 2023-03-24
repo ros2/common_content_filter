@@ -27,7 +27,7 @@ extern "C"
 {
 #endif
 
-/// Create a rcl content filter fallback instance to filter ros2 message data.
+/// Create a rcl content filter fallback instance to filter ros 2 message data.
 /**
  * \param[in] type_support Type support of the topic data being filtered.
  * \return a valid address if success, or NULL on failure.
@@ -48,8 +48,8 @@ rcl_content_filter_fallback_is_enabled(void * instance);
 /// Use the rcl content filter fallback instance to evalute the data.
 /**
  * \param[in] instance A rcl content filter fallback instance.
- * \param[in] data ros2 payload data.
- * \param[in] serialized Indicate whether the ros2 payload data is serialized or not.
+ * \param[in] data ros 2 payload data.
+ * \param[in] serialized Indicate whether the ros 2 payload data is serialized or not.
  * \return true if evaluate successfully, or false.
  */
 RCL_CONTENT_FILTER_FALLBACK_PUBLIC

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
-project(rcl_content_filter_fallback)
 
+project(rcl_content_filter_fallback)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)

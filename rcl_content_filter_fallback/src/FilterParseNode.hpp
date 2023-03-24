@@ -46,7 +46,7 @@ struct ParseNode : parse_tree::basic_node<ParseNode>
   // and the type id
   std::vector<FilterField::FieldAccessor> field_access_path;
   FilterValue::ValueKind field_kind = FilterValue::ValueKind::STRING;
-  // ros2 primitive type id
+  // ros 2 primitive type id
   uint8_t type_id = 0;
 
   // When the node is a parameter, it will hold the parameter index

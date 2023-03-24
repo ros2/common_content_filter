@@ -4,7 +4,9 @@
   <name>rcl_content_filter_fallback</name>
   <version>0.0.1</version>
   <description>To support the rcl content filter fallback (a CFT fallback on the DDS) used in rcl.</description>
-  <maintainer email="lihui.chen@sony.com">Chen Lihui</maintainer>
+  <maintainer email="Tomoya.Fujita@sony.com">Tomoya Fujita</maintainer>
+  <maintainer email="Barry.Xu@sony.com">Barry Xu</maintainer>
+  <maintainer email="Lihui.Chen@sony.com">Chen Lihui</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

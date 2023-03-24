@@ -68,7 +68,7 @@ macro(build_tao_pegtl)
   )
 endmacro()
 
-# build pegtl 2.8.3 if it's not available in the system or ros2 environment
+# build pegtl 2.8.3 if it's not available in the system or ros 2 environment
 find_package(pegtl QUIET)
 if(NOT pegtl_FOUND OR NOT "${pegtl_VERSION}" VERSION_EQUAL 2.8.3)
   build_tao_pegtl()

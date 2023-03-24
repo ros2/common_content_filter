@@ -4,7 +4,9 @@
   <name>test_content_filter_msgs</name>
   <version>0.0.1</version>
   <description>Complex messages for test rcl content filter fallback api.</description>
-  <maintainer email="lihui.chen@sony.com">Chen Lihui</maintainer>
+  <maintainer email="Tomoya.Fujita@sony.com">Tomoya Fujita</maintainer>
+  <maintainer email="Barry.Xu@sony.com">Barry Xu</maintainer>
+  <maintainer email="Lihui.Chen@sony.com">Chen Lihui</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
