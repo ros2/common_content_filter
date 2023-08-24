@@ -24,6 +24,7 @@
 #include <rosidl_typesupport_introspection_c/message_introspection.h>
 
 #include <cassert>
+#include <cstring>
 #include <string>
 #include <unordered_set>
 #include <vector>

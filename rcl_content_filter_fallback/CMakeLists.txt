@@ -19,8 +19,9 @@ find_package(rmw_implementation REQUIRED)
 find_package(rosidl_typesupport_introspection_c REQUIRED)
 find_package(rosidl_typesupport_introspection_cpp REQUIRED)
 find_package(tao_pegtl_vendor REQUIRED)
+find_package(pegtl REQUIRED)
 
-add_library(${PROJECT_NAME}_library SHARED
+add_library(${PROJECT_NAME} SHARED
   src/FilterCompoundCondition.cpp
   src/FilterExpression.cpp
   src/FilterExpressionParser.cpp
@@ -32,31 +33,35 @@ add_library(${PROJECT_NAME}_library SHARED
   src/Utilities.cpp
   src/rcl_content_filter_fallback.cpp)
 
-set_target_properties(${PROJECT_NAME}_library
+set_target_properties(${PROJECT_NAME}
   PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 
-target_include_directories(${PROJECT_NAME}_library
+target_include_directories(${PROJECT_NAME}
   PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
-ament_target_dependencies(${PROJECT_NAME}_library
-  "rcpputils"
-  "rcutils"
-  "rmw"
-  "rmw_implementation"
-  "rosidl_typesupport_introspection_c"
-  "rosidl_typesupport_introspection_cpp"
-  "tao_pegtl_vendor"
+target_link_libraries(${PROJECT_NAME} PUBLIC
+  ament_index_cpp::ament_index_cpp
+  rcpputils::rcpputils
+  rcutils::rcutils
+  rmw::rmw
+  rmw_implementation::rmw_implementation
+  rosidl_typesupport_introspection_c::rosidl_typesupport_introspection_c
+  rosidl_typesupport_introspection_cpp::rosidl_typesupport_introspection_cpp
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+  taocpp::pegtl
 )
 
 # Causes the visibility macros to use dllexport rather than dllimport,
 # which is appropriate when building the dll but not consuming it.
-target_compile_definitions(${PROJECT_NAME}_library
+target_compile_definitions(${PROJECT_NAME}
   PRIVATE "RCL_CONTENT_FILTER_FALLBACK_BUILDING_LIBRARY")
 
 install(
-  TARGETS ${PROJECT_NAME}_library EXPORT ${PROJECT_NAME}_library
+  TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
@@ -64,10 +69,10 @@ install(
 
 # Export old-style CMake variables
 ament_export_include_directories("include/${PROJECT_NAME}")
-ament_export_libraries(${PROJECT_NAME}_library)
+ament_export_libraries(${PROJECT_NAME})
 
 # Export modern CMake targets
-ament_export_targets(${PROJECT_NAME}_library)
+ament_export_targets(${PROJECT_NAME})
 
 ament_export_dependencies(ament_cmake_core)
 ament_export_dependencies(rcpputils)
@@ -95,7 +100,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 
   ament_add_gtest(test_api test/test_api.cpp)
-  target_link_libraries(test_api ${PROJECT_NAME}_library)
+  target_link_libraries(test_api ${PROJECT_NAME})
   ament_target_dependencies(
     test_api test_content_filter_msgs test_msgs osrf_testing_tools_cpp)
 endif()
